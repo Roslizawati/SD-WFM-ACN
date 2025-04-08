@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WFM Agent Schedules - May 2025</title>
+  <title>Simple WFM Schedule</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(32, 1fr);
+      grid-template-columns: repeat(9, 1fr);
       gap: 1px;
       background-color: #ccc;
       font-size: 11px;
@@ -49,7 +49,7 @@
       z-index: 2;
     }
 
-    .agent-day {
+    .agent-name {
       background-color: #f0f0f0;
       font-weight: bold;
       position: sticky;
@@ -59,30 +59,62 @@
 
     .shift { background-color: #d4edda; } /* Working */
     .empty { background-color: #f9f9fb; } /* Off */
-    .night-shift { background-color: #f8d7da; } /* Night shift */
   </style>
 </head>
 <body>
 
-<h1>WFM Monthly Schedule - May 2025</h1>
+<h1>Simple WFM Schedule</h1>
 
 <div class="controls">
-  <label for="agent">Select Agent:</label>
-  <select id="agent">
-    <script>
-      for (let i = 1; i <= 10; i++) {
-        document.write(`<option value="Agent ${i}">Agent ${i}</option>`);
-      }
-    </script>
+  <label for="agent1">Agent 1 Schedule:</label>
+  <select id="agent1">
+    <option value="7-15">07:00 - 15:00</option>
+    <option value="8-16">08:00 - 16:00</option>
+    <option value="9-17">09:00 - 17:00</option>
+    <option value="10-18">10:00 - 18:00</option>
+    <option value="12-20">12:00 - 20:00</option>
   </select>
+  <br>
 
-  <label for="schedule">Select Schedule:</label>
-  <select id="schedule">
-    <option value="7-16">07:00 - 16:00</option>
-    <option value="10-19">10:00 - 19:00</option>
-    <option value="14-23">14:00 - 23:00</option>
-    <option value="22-7">22:00 - 07:00 (Next Day)</option>
+  <label for="agent2">Agent 2 Schedule:</label>
+  <select id="agent2">
+    <option value="7-15">07:00 - 15:00</option>
+    <option value="8-16">08:00 - 16:00</option>
+    <option value="9-17">09:00 - 17:00</option>
+    <option value="10-18">10:00 - 18:00</option>
+    <option value="12-20">12:00 - 20:00</option>
   </select>
+  <br>
+
+  <label for="agent3">Agent 3 Schedule:</label>
+  <select id="agent3">
+    <option value="7-15">07:00 - 15:00</option>
+    <option value="8-16">08:00 - 16:00</option>
+    <option value="9-17">09:00 - 17:00</option>
+    <option value="10-18">10:00 - 18:00</option>
+    <option value="12-20">12:00 - 20:00</option>
+  </select>
+  <br>
+
+  <label for="agent4">Agent 4 Schedule:</label>
+  <select id="agent4">
+    <option value="7-15">07:00 - 15:00</option>
+    <option value="8-16">08:00 - 16:00</option>
+    <option value="9-17">09:00 - 17:00</option>
+    <option value="10-18">10:00 - 18:00</option>
+    <option value="12-20">12:00 - 20:00</option>
+  </select>
+  <br>
+
+  <label for="agent5">Agent 5 Schedule:</label>
+  <select id="agent5">
+    <option value="7-15">07:00 - 15:00</option>
+    <option value="8-16">08:00 - 16:00</option>
+    <option value="9-17">09:00 - 17:00</option>
+    <option value="10-18">10:00 - 18:00</option>
+    <option value="12-20">12:00 - 20:00</option>
+  </select>
+  <br><br>
 
   <button onclick="generateSchedule()">Submit</button>
 </div>
@@ -92,71 +124,40 @@
 <script>
   const scheduleGrid = document.getElementById("schedule-grid");
 
-  const may2025 = [
-    "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed",
-    "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed",
-    "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed",
-    "Thu", "Fri", "Sat", "Sun", "Mon", "Tue", "Wed",
-    "Thu"
-  ]; // 31 days in May 2025 starting on Thursday
+  // Schedule Hours
+  const hours = [
+    "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", 
+    "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
+  ];
 
   function generateSchedule() {
-    const selectedAgent = document.getElementById("agent").value;
-    const selectedSchedule = document.getElementById("schedule").value;
-    let [startHour, endHour] = selectedSchedule.split("-").map(Number);
-
-    const isNightShift = startHour > endHour;
-
+    // Clear the previous grid
     scheduleGrid.innerHTML = "";
 
-    // Header row for Hours (7AM to 4PM, etc.)
+    // Header Row (for hours)
     scheduleGrid.innerHTML += `<div class="header">Agent / Time</div>`;
-    for (let h = 7; h <= 23; h++) {
-      scheduleGrid.innerHTML += `<div class="header">${h}:00</div>`;
-    }
+    hours.forEach(hour => {
+      scheduleGrid.innerHTML += `<div class="header">${hour}</div>`;
+    });
 
-    // Header for Days of the Month (May 1 to May 31)
-    for (let d = 1; d <= 31; d++) {
-      const dayStr = `May ${d} (${may2025[d - 1]})`;
-      scheduleGrid.innerHTML += `<div class="header">${dayStr}</div>`;
-    }
+    // Agent Schedule Rows
+    for (let agentNumber = 1; agentNumber <= 5; agentNumber++) {
+      const agentSelect = document.getElementById(`agent${agentNumber}`);
+      const selectedSchedule = agentSelect.value;
+      const [startHour, endHour] = selectedSchedule.split("-").map(Number);
 
-    // Fill in Agent's schedule for each hour slot
-    for (let d = 1; d <= 31; d++) {
-      const dayStr = `May ${d} (${may2025[d - 1]})`;
+      // Agent Name Column
+      scheduleGrid.innerHTML += `<div class="agent-name">Agent ${agentNumber}</div>`;
 
-      // Selected agent
-      scheduleGrid.innerHTML += `<div class="agent-day">${selectedAgent} - ${dayStr}</div>`;
-      for (let h = 7; h <= 23; h++) {
-        if (isNightShift) {
-          if (h >= startHour || h < endHour) {
-            scheduleGrid.innerHTML += `<div class="night-shift">N</div>`;
-          } else {
-            scheduleGrid.innerHTML += `<div class="empty"></div>`;
-          }
+      // Create the schedule grid for the agent
+      hours.forEach((hour, index) => {
+        // Check if the hour is within the selected schedule for the agent
+        if (index >= startHour - 7 && index < endHour - 7) {
+          scheduleGrid.innerHTML += `<div class="shift">W</div>`;  // Working hour
         } else {
-          if (h >= startHour && h < endHour) {
-            scheduleGrid.innerHTML += `<div class="shift">W</div>`;
-          } else {
-            scheduleGrid.innerHTML += `<div class="empty"></div>`;
-          }
+          scheduleGrid.innerHTML += `<div class="empty"></div>`;  // Off hour
         }
-      }
-    }
-
-    // Fill in Agent 2 schedule (fixed shift 10:00 - 19:00)
-    for (let d = 1; d <= 31; d++) {
-      const dayStr = `May ${d} (${may2025[d - 1]})`;
-
-      // Agent 2
-      scheduleGrid.innerHTML += `<div class="agent-day">Agent 2 - ${dayStr}</div>`;
-      for (let h = 7; h <= 23; h++) {
-        if (h >= 10 && h < 19) {
-          scheduleGrid.innerHTML += `<div class="shift">W</div>`;
-        } else {
-          scheduleGrid.innerHTML += `<div class="empty"></div>`;
-        }
-      }
+      });
     }
   }
 </script>
