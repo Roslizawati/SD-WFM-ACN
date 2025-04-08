@@ -85,127 +85,8 @@
         <option value="7">(11.00pm-8.00am)</option>
       </select>
     </div>
+    <!-- Repeat for the other agents -->
 
-    <div class="agent-row">
-      <strong>Aleesha</strong>
-      <select id="agent2-schedule">
-         <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-     <div class="schedule-form">
-    <div class="agent-row">
-      <strong>Ilhan</strong>
-      <select id="agent3-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-    <div class="agent-row">
-      <strong>Amir</strong>
-      <select id="agent4-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
- <div class="schedule-form">
-    <div class="agent-row">
-      <strong>Haikal</strong>
-      <select id="agent5-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-    <div class="agent-row">
-      <strong>Hidayah</strong>
-      <select id="agent6-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-    <div class="schedule-form">
-    <div class="agent-row">
-      <strong>Husna</strong>
-      <select id="agent7-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-    <div class="agent-row">
-      <strong>Siti</strong>
-      <select id="agent8-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-       <div class="schedule-form">
-    <div class="agent-row">
-      <strong>Tasha</strong>
-      <select id="agent9-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-
-    <div class="agent-row">
-      <strong>Kevin</strong>
-      <select id="agent10-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      
     <button onclick="generateSchedule()">Submit</button>
   </div>
 
@@ -233,14 +114,14 @@
 
       const agentRows = [
         { name: 'Hana', start: agent1Start },
-        { name: 'Aleesha', start: agent2Start }
+        { name: 'Aleesha', start: agent2Start },
         { name: 'Ilhan', start: agent3Start },
-        { name: 'Amir', start: agent4Start }
-      { name: 'Haikal', start: agent5Start },
-        { name: 'Hidayah, start: agent6Start }
-      { name: 'Husna', start: agent7Start },
-        { name: 'Siti', start: agent8Start }
-      { name: 'Tasha', start: agent9Start },
+        { name: 'Amir', start: agent4Start },
+        { name: 'Haikal', start: agent5Start },
+        { name: 'Hidayah', start: agent6Start },
+        { name: 'Husna', start: agent7Start },
+        { name: 'Siti', start: agent8Start },
+        { name: 'Tasha', start: agent9Start },
         { name: 'Kevin', start: agent10Start }
       ];
 
