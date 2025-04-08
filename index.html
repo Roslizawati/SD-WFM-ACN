@@ -85,8 +85,21 @@
         <option value="7">(11.00pm-8.00am)</option>
       </select>
     </div>
-    <!-- Repeat for the other agents -->
-
+    <!-- Repeat for other agents -->
+    <div class="agent-row">
+      <strong>Aleesha</strong>
+      <select id="agent2-schedule">
+        <option value="7">(7.00am-4.00pm)</option>
+        <option value="10">(8.30am-5.30pm)</option>
+        <option value="7">(10am-7pm)</option>
+        <option value="10">(1.00pm-10.00pm)</option>
+        <option value="7">(2.00pm-11.00pm)</option>
+        <option value="10">(3.00pm-12.00am)</option>
+        <option value="7">(11.00pm-8.00am)</option>
+      </select>
+    </div>
+    <!-- Add more agents as needed -->
+    
     <button onclick="generateSchedule()">Submit</button>
   </div>
 
@@ -96,17 +109,16 @@
     function generateSchedule() {
       const agent1Start = parseInt(document.getElementById('agent1-schedule').value);
       const agent2Start = parseInt(document.getElementById('agent2-schedule').value);
-      const agent3Start = parseInt(document.getElementById('agent3-schedule').value);
-      const agent4Start = parseInt(document.getElementById('agent4-schedule').value);
-      const agent5Start = parseInt(document.getElementById('agent5-schedule').value);
-      const agent6Start = parseInt(document.getElementById('agent6-schedule').value);
-      const agent7Start = parseInt(document.getElementById('agent7-schedule').value);
-      const agent8Start = parseInt(document.getElementById('agent8-schedule').value);
-      const agent9Start = parseInt(document.getElementById('agent9-schedule').value);
-      const agent10Start = parseInt(document.getElementById('agent10-schedule').value);
+      const agent3Start = parseInt(document.getElementById('agent3-schedule')?.value || 0); // Added safe check for missing inputs
+      const agent4Start = parseInt(document.getElementById('agent4-schedule')?.value || 0);
+      const agent5Start = parseInt(document.getElementById('agent5-schedule')?.value || 0);
+      const agent6Start = parseInt(document.getElementById('agent6-schedule')?.value || 0);
+      const agent7Start = parseInt(document.getElementById('agent7-schedule')?.value || 0);
+      const agent8Start = parseInt(document.getElementById('agent8-schedule')?.value || 0);
+      const agent9Start = parseInt(document.getElementById('agent9-schedule')?.value || 0);
+      const agent10Start = parseInt(document.getElementById('agent10-schedule')?.value || 0);
 
       const hours = [];
-
       for (let i = 0; i < 24; i++) {
         let hour = (i % 12 === 0 ? 12 : i % 12) + (i < 12 ? 'am' : 'pm');
         hours.push(hour);
