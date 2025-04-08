@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WFM Schedule - May 2025</title>
+  <title>WFM Agent Schedules - May 2025</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -59,6 +59,7 @@
 
     .shift { background-color: #d4edda; } /* Working */
     .empty { background-color: #f9f9fb; } /* Off */
+    .night-shift { background-color: #f8d7da; } /* Night shift */
   </style>
 </head>
 <body>
@@ -129,7 +130,7 @@
       for (let h = 7; h <= 23; h++) {
         if (isNightShift) {
           if (h >= startHour || h < endHour) {
-            scheduleGrid.innerHTML += `<div class="shift">W</div>`;
+            scheduleGrid.innerHTML += `<div class="night-shift">N</div>`;
           } else {
             scheduleGrid.innerHTML += `<div class="empty"></div>`;
           }
