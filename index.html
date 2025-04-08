@@ -204,14 +204,14 @@
     function generateSchedule() {
       const agent1Start = parseInt(document.getElementById('agent1-schedule').value);
       const agent2Start = parseInt(document.getElementById('agent2-schedule').value);
-      const agent3Start = parseInt(document.getElementById('agent3-schedule')?.value || 0); // Added safe check for missing inputs
-      const agent4Start = parseInt(document.getElementById('agent4-schedule')?.value || 0);
-      const agent5Start = parseInt(document.getElementById('agent5-schedule')?.value || 0);
-      const agent6Start = parseInt(document.getElementById('agent6-schedule')?.value || 0);
-      const agent7Start = parseInt(document.getElementById('agent7-schedule')?.value || 0);
-      const agent8Start = parseInt(document.getElementById('agent8-schedule')?.value || 0);
-      const agent9Start = parseInt(document.getElementById('agent9-schedule')?.value || 0);
-      const agent10Start = parseInt(document.getElementById('agent10-schedule')?.value || 0);
+      const agent3Start = parseInt(document.getElementById('agent3-schedule')?.value); // Added safe check for missing inputs
+      const agent4Start = parseInt(document.getElementById('agent4-schedule')?.value);
+      const agent5Start = parseInt(document.getElementById('agent5-schedule')?.value);
+      const agent6Start = parseInt(document.getElementById('agent6-schedule')?.value);
+      const agent7Start = parseInt(document.getElementById('agent7-schedule')?.value);
+      const agent8Start = parseInt(document.getElementById('agent8-schedule')?.value);
+      const agent9Start = parseInt(document.getElementById('agent9-schedule')?.value);
+      const agent10Start = parseInt(document.getElementById('agent10-schedule')?.value);
 
       const hours = [];
       for (let i = 0; i < 24; i++) {
