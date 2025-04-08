@@ -70,7 +70,7 @@
 </head>
 <body>
 
-  <h1>WFM Schedule Viewer</h1>
+  <h1>WFM Service Desk SDG_ACN</h1>
 
   <div class="schedule-form">
     <div class="agent-row">
@@ -92,7 +92,7 @@
      <div class="schedule-form">
     <div class="agent-row">
       <strong>Ilhan</strong>
-      <select id="agent1-schedule">
+      <select id="agent3-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -100,7 +100,7 @@
 
     <div class="agent-row">
       <strong>Amir</strong>
-      <select id="agent2-schedule">
+      <select id="agent4-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -108,7 +108,7 @@
  <div class="schedule-form">
     <div class="agent-row">
       <strong>Haikal</strong>
-      <select id="agent1-schedule">
+      <select id="agent5-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -116,7 +116,7 @@
 
     <div class="agent-row">
       <strong>Hidayah</strong>
-      <select id="agent2-schedule">
+      <select id="agent6-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -125,7 +125,7 @@
     <div class="schedule-form">
     <div class="agent-row">
       <strong>Husna</strong>
-      <select id="agent1-schedule">
+      <select id="agent7-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -133,7 +133,7 @@
 
     <div class="agent-row">
       <strong>Siti</strong>
-      <select id="agent2-schedule">
+      <select id="agent8-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -142,7 +142,7 @@
        <div class="schedule-form">
     <div class="agent-row">
       <strong>Tasha</strong>
-      <select id="agent1-schedule">
+      <select id="agent9-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -150,7 +150,7 @@
 
     <div class="agent-row">
       <strong>Kevin</strong>
-      <select id="agent2-schedule">
+      <select id="agent10-schedule">
         <option value="7">(7am-4pm)</option>
         <option value="10">(10am-7pm)</option>
       </select>
@@ -165,6 +165,15 @@
     function generateSchedule() {
       const agent1Start = parseInt(document.getElementById('agent1-schedule').value);
       const agent2Start = parseInt(document.getElementById('agent2-schedule').value);
+      const agent3Start = parseInt(document.getElementById('agent1-schedule').value);
+      const agent4Start = parseInt(document.getElementById('agent2-schedule').value);
+      const agent5Start = parseInt(document.getElementById('agent1-schedule').value);
+      const agent6Start = parseInt(document.getElementById('agent2-schedule').value);
+      const agent7Start = parseInt(document.getElementById('agent1-schedule').value);
+      const agent8Start = parseInt(document.getElementById('agent2-schedule').value);
+      const agent9Start = parseInt(document.getElementById('agent1-schedule').value);
+      const agent10Start = parseInt(document.getElementById('agent2-schedule').value);
+
       const hours = [];
 
       for (let i = 0; i < 24; i++) {
@@ -175,6 +184,14 @@
       const agentRows = [
         { name: 'Agent 1', start: agent1Start },
         { name: 'Agent 2', start: agent2Start }
+        { name: 'Agent 3', start: agent1Start },
+        { name: 'Agent 4', start: agent2Start }
+      { name: 'Agent 5', start: agent1Start },
+        { name: 'Agent 6', start: agent2Start }
+      { name: 'Agent 7', start: agent1Start },
+        { name: 'Agent 8', start: agent2Start }
+      { name: 'Agent 9', start: agent1Start },
+        { name: 'Agent 10', start: agent2Start }
       ];
 
       let table = '<table><tr><th>Agent</th>';
