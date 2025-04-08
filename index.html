@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>WFM Hourly Schedule</title>
+  <title>WFM Monthly Schedule</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f9f9fb;
       padding: 20px;
+      background-color: #f4f4f8;
     }
 
     h1 {
+      text-align: center;
+    }
+
+    label, select, button {
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+
+    .controls {
       text-align: center;
       margin-bottom: 30px;
     }
@@ -20,16 +29,16 @@
       grid-template-columns: 120px repeat(24, 1fr);
       gap: 1px;
       background-color: #ccc;
+      font-size: 11px;
     }
 
     .grid-container > div {
       background-color: white;
-      padding: 6px;
-      font-size: 12px;
       text-align: center;
+      padding: 3px;
     }
 
-    .hour-header {
+    .header {
       background-color: #6c63ff;
       color: white;
       font-weight: bold;
@@ -38,62 +47,75 @@
       z-index: 2;
     }
 
-    .agent-name {
-      background-color: #f0f0f5;
+    .agent-day {
+      background-color: #f0f0f0;
       font-weight: bold;
       position: sticky;
       left: 0;
       z-index: 1;
+      white-space: nowrap;
     }
 
-    .shift {
-      background-color: #d4edda;
-    }
-
-    .empty {
-      background-color: #f9f9fb;
-    }
+    .shift { background-color: #d4edda; }   /* Working */
+    .empty { background-color: #f9f9fb; }   /* Off */
   </style>
 </head>
 <body>
 
-<h1>WFM Daily Agent Milestone View</h1>
+<h1>WFM Monthly Agent Schedule</h1>
 
-<div class="grid-container">
-  <!-- Header Row -->
-  <div class="hour-header">Agent</div>
-  <!-- Hours 00:00–23:00 -->
-  <script>
-    for (let i = 0; i < 24; i++) {
-      document.write(`<div class="hour-header">${i.toString().padStart(2, '0')}:00</div>`);
-    }
-  </script>
+<div class="controls">
+  <label for="agent1-schedule">Agent 1 Schedule:</label>
+  <select id="agent1-schedule">
+    <option value="7-16">7:00 AM - 4:00 PM</option>
+    <option value="10-19">10:00 AM - 7:00 PM</option>
+  </select>
 
-  <!-- Agent 1: 07:00 to 16:00 -->
-  <div class="agent-name">Agent 1</div>
-  <script>
-    for (let i = 0; i < 24; i++) {
-      if (i >= 7 && i < 16) {
-        document.write(`<div class="shift">Working</div>`);
-      } else {
-        document.write(`<div class="empty"></div>`);
-      }
-    }
-  </script>
-
-  <!-- Agent 2: 10:00 to 19:00 -->
-  <div class="agent-name">Agent 2</div>
-  <script>
-    for (let i = 0; i < 24; i++) {
-      if (i >= 10 && i < 19) {
-        document.write(`<div class="shift">Working</div>`);
-      } else {
-        document.write(`<div class="empty"></div>`);
-      }
-    }
-  </script>
-
+  <button onclick="generateSchedule()">Submit</button>
 </div>
+
+<div id="schedule-grid" class="grid-container"></div>
+
+<script>
+  const daysInMonth = 30;
+
+  function generateSchedule() {
+    const scheduleGrid = document.getElementById("schedule-grid");
+    scheduleGrid.innerHTML = "";
+
+    // Header row
+    scheduleGrid.innerHTML += `<div class="header">Agent / Day</div>`;
+    for (let h = 0; h < 24; h++) {
+      scheduleGrid.innerHTML += `<div class="header">${h.toString().padStart(2, '0')}:00</div>`;
+    }
+
+    const selected = document.getElementById("agent1-schedule").value;
+    let [start1, end1] = selected.split('-').map(Number);
+    const start2 = 10, end2 = 19;
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      // Agent 1 row
+      scheduleGrid.innerHTML += `<div class="agent-day">Agent 1 - Day ${day}</div>`;
+      for (let h = 0; h < 24; h++) {
+        if (h >= start1 && h < end1) {
+          scheduleGrid.innerHTML += `<div class="shift">W</div>`;
+        } else {
+          scheduleGrid.innerHTML += `<div class="empty"></div>`;
+        }
+      }
+
+      // Agent 2 row (fixed shift)
+      scheduleGrid.innerHTML += `<div class="agent-day">Agent 2 - Day ${day}</div>`;
+      for (let h = 0; h < 24; h++) {
+        if (h >= start2 && h < end2) {
+          scheduleGrid.innerHTML += `<div class="shift">W</div>`;
+        } else {
+          scheduleGrid.innerHTML += `<div class="empty"></div>`;
+        }
+      }
+    }
+  }
+</script>
 
 </body>
 </html>
