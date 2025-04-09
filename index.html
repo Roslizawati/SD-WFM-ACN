@@ -202,59 +202,59 @@
 
   <script>
     function generateSchedule() {
-      const agent1Start = parseInt(document.getElementById('agent1-schedule').value);
-      const agent2Start = parseInt(document.getElementById('agent2-schedule').value);
-      const agent3Start = parseInt(document.getElementById('agent3-schedule')?.value); // Added safe check for missing inputs
-      const agent4Start = parseInt(document.getElementById('agent4-schedule')?.value);
-      const agent5Start = parseInt(document.getElementById('agent5-schedule')?.value);
-      const agent6Start = parseInt(document.getElementById('agent6-schedule')?.value);
-      const agent7Start = parseInt(document.getElementById('agent7-schedule')?.value);
-      const agent8Start = parseInt(document.getElementById('agent8-schedule')?.value);
-      const agent9Start = parseInt(document.getElementById('agent9-schedule')?.value);
-      const agent10Start = parseInt(document.getElementById('agent10-schedule')?.value);
+  const agent1Start = parseInt(document.getElementById('agent1-schedule').value);
+  const agent2Start = parseInt(document.getElementById('agent2-schedule').value);
+  const agent3Start = parseInt(document.getElementById('agent3-schedule')?.value);
+  const agent4Start = parseInt(document.getElementById('agent4-schedule')?.value);
+  const agent5Start = parseInt(document.getElementById('agent5-schedule')?.value);
+  const agent6Start = parseInt(document.getElementById('agent6-schedule')?.value);
+  const agent7Start = parseInt(document.getElementById('agent7-schedule')?.value);
+  const agent8Start = parseInt(document.getElementById('agent8-schedule')?.value);
+  const agent9Start = parseInt(document.getElementById('agent9-schedule')?.value);
+  const agent10Start = parseInt(document.getElementById('agent10-schedule')?.value);
 
-      const hours = [];
-      for (let i = 0; i < 24; i++) {
-        let hour = (i % 12 === 0 ? 12 : i % 12) + (i < 12 ? 'am' : 'pm');
-        hours.push(hour);
+  const hours = [];
+  for (let i = 0; i < 24; i++) {
+    let hour = (i % 12 === 0 ? 12 : i % 12) + (i < 12 ? 'am' : 'pm');
+    hours.push(hour);
+  }
+
+  const agentRows = [
+    { name: 'Hana', start: agent1Start },
+    { name: 'Aleesha', start: agent2Start },
+    { name: 'Ilhan', start: agent3Start },
+    { name: 'Amir', start: agent4Start },
+    { name: 'Haikal', start: agent5Start },
+    { name: 'Hidayah', start: agent6Start },
+    { name: 'Husna', start: agent7Start },
+    { name: 'Siti', start: agent8Start },
+    { name: 'Tasha', start: agent9Start },
+    { name: 'Kevin', start: agent10Start }
+  ];
+
+  let table = '<table><tr><th>Agent</th>';
+
+  hours.forEach(hour => {
+    table += `<th>${hour}</th>`;
+  });
+
+  table += '</tr>';
+
+  agentRows.forEach(agent => {
+    table += `<tr><td>${agent.name}</td>`;
+    for (let i = 0; i < 24; i++) {
+      if (i >= agent.start && i < agent.start + 9) {
+        table += `<td class="highlight"></td>`;
+      } else {
+        table += `<td></td>`;
       }
-
-      const agentRows = [
-        { name: 'Hana', start: agent1Start },
-        { name: 'Aleesha', start: agent2Start },
-        { name: 'Ilhan', start: agent3Start },
-        { name: 'Amir', start: agent4Start },
-        { name: 'Haikal', start: agent5Start },
-        { name: 'Hidayah', start: agent6Start },
-        { name: 'Husna', start: agent7Start },
-        { name: 'Siti', start: agent8Start },
-        { name: 'Tasha', start: agent9Start },
-        { name: 'Kevin', start: agent10Start }
-      ];
-
-      let table = '<table><tr><th>Agent</th>';
-
-      hours.forEach(hour => {
-        table += <th>${hour}</th>;
-      });
-
-      table += '</tr>';
-
-      agentRows.forEach(agent => {
-        table += <tr><td>${agent.name}</td>;
-        for (let i = 0; i < 24; i++) {
-          if (i >= agent.start && i < agent.start + 9) {
-            table += <td class="highlight"></td>;
-          } else {
-            table += <td></td>;
-          }
-        }
-        table += '</tr>';
-      });
-
-      table += '</table>';
-      document.getElementById('timetable').innerHTML = table;
     }
+    table += '</tr>';
+  });
+
+  table += '</table>';
+  document.getElementById('timetable').innerHTML = table;
+}
   </script>
 
 </body>
