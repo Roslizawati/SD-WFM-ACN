@@ -1,261 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>WFM Service Desk SDG_ACN</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      padding: 30px;
-    }
+<!-- Replacing only the agent select IDs (inside <select>) with unique ones -->
+<!-- I'll paste only the corrected agent rows section for brevity: -->
 
-    h1 {
-      text-align: center;
-    }
+<div class="agent-row">
+  <strong>Hana</strong>
+  <select id="agent1-schedule">
+    <option value="7">(7.00am-4.00pm)</option>
+    <option value="10">(8.30am-5.30pm)</option>
+    <option value="10">(10am-7pm)</option>
+    <option value="13">(1.00pm-10.00pm)</option>
+    <option value="14">(2.00pm-11.00pm)</option>
+    <option value="15">(3.00pm-12.00am)</option>
+    <option value="23">(11.00pm-8.00am)</option>
+  </select>
+</div>
 
-    .schedule-form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 30px;
-    }
+<div class="agent-row">
+  <strong>Aleesha</strong>
+  <select id="agent2-schedule">
+    <option value="7">(7.00am-4.00pm)</option>
+    <option value="10">(8.30am-5.30pm)</option>
+    <option value="10">(10am-7pm)</option>
+    <option value="13">(1.00pm-10.00pm)</option>
+    <option value="14">(2.00pm-11.00pm)</option>
+    <option value="15">(3.00pm-12.00am)</option>
+    <option value="23">(11.00pm-8.00am)</option>
+  </select>
+</div>
 
-    .agent-row {
-      display: flex;
-      gap: 20px;
-      margin: 10px 0;
-    }
+<div class="agent-row">
+  <strong>Ilhan</strong>
+  <select id="agent3-schedule">
+    ...
+  </select>
+</div>
 
-    select {
-      padding: 5px;
-    }
-
-    button {
-      padding: 10px 20px;
-      background-color: #6c63ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-
-    .timetable {
-      margin-top: 30px;
-      overflow-x: auto;
-    }
-
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      text-align: center;
-      padding: 8px;
-      min-width: 100px;
-    }
-
-    th {
-      background-color: #6c63ff;
-      color: white;
-    }
-
-    .highlight {
-      background-color: #f06292;
-    }
-  </style>
-</head>
-<body>
-
-  <h1>WFM Service Desk SDG_ACN</h1>
-
-  <div class="schedule-form">
-    <div class="agent-row">
-      <strong>Hana</strong>
-      <select id="agent1-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-    <!-- Repeat for other agents -->
-    <div class="agent-row">
-      <strong>Aleesha</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-    <!-- Add more agents as needed -->
-      <div class="agent-row">
-      <strong>Ilhan</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Amir</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Haikal</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Hidayah</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Husna</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Siti</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Tasha</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-      <div class="agent-row">
-      <strong>Kevin</strong>
-      <select id="agent2-schedule">
-        <option value="7">(7.00am-4.00pm)</option>
-        <option value="10">(8.30am-5.30pm)</option>
-        <option value="7">(10am-7pm)</option>
-        <option value="10">(1.00pm-10.00pm)</option>
-        <option value="7">(2.00pm-11.00pm)</option>
-        <option value="10">(3.00pm-12.00am)</option>
-        <option value="7">(11.00pm-8.00am)</option>
-      </select>
-    </div>
-    <button onclick="generateSchedule()">Submit</button>
-  </div>
-
-  <div class="timetable" id="timetable"></div>
-
-  <script>
-    function generateSchedule() {
-      const agent1Start = parseInt(document.getElementById('agent1-schedule').value);
-      const agent2Start = parseInt(document.getElementById('agent2-schedule').value);
-      const agent3Start = parseInt(document.getElementById('agent3-schedule')?.value); // Added safe check for missing inputs
-      const agent4Start = parseInt(document.getElementById('agent4-schedule')?.value);
-      const agent5Start = parseInt(document.getElementById('agent5-schedule')?.value);
-      const agent6Start = parseInt(document.getElementById('agent6-schedule')?.value);
-      const agent7Start = parseInt(document.getElementById('agent7-schedule')?.value);
-      const agent8Start = parseInt(document.getElementById('agent8-schedule')?.value);
-      const agent9Start = parseInt(document.getElementById('agent9-schedule')?.value);
-      const agent10Start = parseInt(document.getElementById('agent10-schedule')?.value);
-
-      const hours = [];
-      for (let i = 0; i < 24; i++) {
-        let hour = (i % 12 === 0 ? 12 : i % 12) + (i < 12 ? 'am' : 'pm');
-        hours.push(hour);
-      }
-
-      const agentRows = [
-        { name: 'Hana', start: agent1Start },
-        { name: 'Aleesha', start: agent2Start },
-        { name: 'Ilhan', start: agent3Start },
-        { name: 'Amir', start: agent4Start },
-        { name: 'Haikal', start: agent5Start },
-        { name: 'Hidayah', start: agent6Start },
-        { name: 'Husna', start: agent7Start },
-        { name: 'Siti', start: agent8Start },
-        { name: 'Tasha', start: agent9Start },
-        { name: 'Kevin', start: agent10Start }
-      ];
-
-      let table = '<table><tr><th>Agent</th>';
-
-      hours.forEach(hour => {
-        table += `<th>${hour}</th>`;
-      });
-
-      table += '</tr>';
-
-      agentRows.forEach(agent => {
-        table += `<tr><td>${agent.name}</td>`;
-        for (let i = 0; i < 24; i++) {
-          if (i >= agent.start && i < agent.start + 9) {
-            table += `<td class="highlight"></td>`;
-          } else {
-            table += `<td></td>`;
-          }
-        }
-        table += '</tr>';
-      });
-
-      table += '</table>';
-      document.getElementById('timetable').innerHTML = table;
-    }
-  </script>
-
-</body>
-</html>
+<div class="agent-row">
+  <strong>Amir</strong>
+  <select id="agent4-schedule">
+    ...
+  </select
