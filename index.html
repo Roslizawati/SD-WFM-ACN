@@ -256,6 +256,75 @@
   document.getElementById('timetable').innerHTML = table;
 }
   </script>
+<script>
+    const scheduleOptions = {
+      '7': ['07:00', '16:00'],
+      '10': ['08:30', '17:30'],
+      '11': ['10:00', '19:00'],
+      '13': ['13:00', '22:00'],
+      '14': ['14:00', '23:00'],
+      '15': ['15:00', '00:00'],
+      '23': ['23:00', '08:00']
+    };
+
+    const agents = ['Hana', 'Aleesha', 'Ilhan', 'Amir', 'Haikal', 'Hidayah', 'Husna', 'Siti', 'Tasha', 'Kevin'];
+
+    function generateSchedule() {
+      const hours = [];
+      for (let i = 0; i < 24; i++) {
+        const h = i.toString().padStart(2, '0');
+        hours.push(`${h}:00`);
+      }
+
+      let table = '<table id="scheduleTable"><tr><th>Agent</th>';
+      hours.forEach(hour => {
+        table += `<th>${hour}</th>`;
+      });
+      table += '</tr>';
+
+      agents.forEach((agent, index) => {
+        const select = document.getElementById(`agent${index + 1}-schedule`);
+        const shiftStartText = select.options[select.selectedIndex].textContent;
+        const shiftValue = select.value;
+        const [startTime, endTime] = scheduleOptions[shiftValue] || ['00:00', '00:00'];
+        const shiftStart = parseInt(startTime.split(':')[0]);
+        const shiftEnd = parseInt(endTime.split(':')[0]);
+
+        table += `<tr><td title="${startTime} - ${endTime}">${agent}</td>`;
+        for (let i = 0; i < 24; i++) {
+          if ((shiftStart < shiftEnd && i >= shiftStart && i < shiftEnd) || (shiftStart > shiftEnd && (i >= shiftStart || i < shiftEnd))) {
+            table += `<td class="highlight" title="${shiftStartText}"></td>`;
+          } else {
+            table += '<td></td>';
+          }
+        }
+        table += '</tr>';
+      });
+
+      table += '</table>';
+      document.getElementById('timetable').innerHTML = table;
+    }
+
+    function exportTableToExcel(tableID, filename = 'Schedule.xlsx') {
+      const table = document.getElementById(tableID);
+      let dataType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      let tableHTML = table.outerHTML.replace(/ /g, '%20');
+
+      const downloadLink = document.createElement("a");
+      document.body.appendChild(downloadLink);
+
+      if (navigator.msSaveOrOpenBlob) {
+        const blob = new Blob(['\ufeff', tableHTML], { type: dataType });
+        navigator.msSaveOrOpenBlob(blob, filename);
+      } else {
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        downloadLink.download = filename;
+        downloadLink.click();
+      }
+    }
+  </script>
+</body>
+</html>
 
 </body>
 </html>
