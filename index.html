@@ -197,9 +197,9 @@
         <option value="3">(3.00pm-12.00am)</option>
         <option value="11">(11.00pm-8.00am)</option>
       </select>
-    <div style="text-align:center;">
+
     <button onclick="generateSchedule()">Submit</button>
-    <button onclick="exportTableToExcel('scheduleTable')">Export to Excel</button>
+
   </div>
 
   <div class="timetable" id="timetable"></div>
@@ -289,7 +289,7 @@
       document.getElementById('timetable').innerHTML = table;
     }
 
-    function exportTableToExcel(tableID, filename = 'Schedule.xlsx') {
+    function exportTableToExcel(tableID, filename = 'Schedule.xls') {
       const table = document.getElementById(tableID);
       let dataType = 'application/vnd.ms-excel';
       let tableHTML = table.outerHTML.replace(/ /g, '%20');
